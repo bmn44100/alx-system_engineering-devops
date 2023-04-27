@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# bash script for FizzBuzz
+
+for indx in {1..100}
+do
+if [ $((indx % 15)) -eq "0" ]
+then
+	echo "FizzBuzz"
+elif [ $((indx % 5)) -eq "0" ]
+then
+	echo "Buzz"
+elif [ $((indx % 3)) -eq "0" ]
+then
+	echo "Fizz"
+else
+	echo $indx
+fi
+done
