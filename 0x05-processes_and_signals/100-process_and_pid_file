@@ -10,7 +10,7 @@ pid_FILE=/var/run/myscript.pid
 echo $$ >> $pid_FILE
 trap 'echo I hate the kill command ; sudo rm '"$pid_FILE"' ; exit' SIGTERM
 trap 'echo Y U no love me?!' SIGINT
-trap 'sudo rm '"$pid_file"' ; exit' SIGQUIT
+trap 'sudo rm '"$pid_FILE"' ; exit' SIGQUIT
 while true
 do
 	echo "To infinity and beyond"
