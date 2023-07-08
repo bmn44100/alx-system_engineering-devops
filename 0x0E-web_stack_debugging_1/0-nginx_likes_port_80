@@ -2,5 +2,5 @@
 # keeping your Ubuntu container’s Nginx installation listening on port 80
 bug_port80="8080 default_server"
 debug_port80="80 default_server"
-sed -i "s/$bug_port80/$debug_port80/" /etc/nginx/sites-enabled/default
-service nginx restart
+sudo sed -i "s/$bug_port80/$debug_port80/" /etc/nginx/sites-enabled/default
+sudo service nginx restart
