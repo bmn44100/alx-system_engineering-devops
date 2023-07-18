@@ -1,15 +1,9 @@
 #!/usr/bin/env bash
-# run the nginx server as the less privileged nginx user
-
-# change the privileges of the nginx config file
-chmod 755 /etc/nginx/nginx.conf
-
-# change user from root user
-sed -i 's/#user www-data;/user nginx;/' /etc/nginx/nginx.conf
-
-# get nginx to be listening on all active IPs on port 8080
-sed -i 's/listen 80/listen 8080/' /etc/nginx/sites-available/default
-sed -i 's/]:80 default_server/]:8080 default_server/' /etc/nginx/sites-available/default
-
-pkill apache2
+# configure container to run nginx servers as less privileged nginx user.
+sudo pkill apache2
+chown nginx:nginx /etc/nginx/nginx.conf
+chmod 700 /etc/nginx/nginx.conf
+nginxuser="user nginx;"
+sudo sed -i "2i $nginxuser" /etc/nginx/nginx.conf
+sudo sed -i "s/80 default_server/8080 default_server/" /etc/nginx/sites-enabled/default
 sudo -u nginx service nginx restart
