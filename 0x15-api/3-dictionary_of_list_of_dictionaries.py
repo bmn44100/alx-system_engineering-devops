@@ -12,7 +12,7 @@ import sys
 
 def employee_username(api_url, employee_id):
     """
-    function that gets data from 
+    function that gets data from
     employee TODO list in the REST api
     """
     employee_name = requests.get(
