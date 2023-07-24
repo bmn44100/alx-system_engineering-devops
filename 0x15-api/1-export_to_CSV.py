@@ -16,7 +16,7 @@ def todolist_csv():
     """
     employee_id = sys.argv[1]
     employee = requests.get("https://jsonplaceholder.typicode.com/users/{}"
-                        .format(employee_id)).json()
+                            .format(employee_id)).json()
     list = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}"
                         .format(employee_id)).json()
     employee_name = employee.get("username")
@@ -24,7 +24,8 @@ def todolist_csv():
         todo_file = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
         for task in list:
             todo_file.writerow([employee_id, employee_name,
-                           task.get("completed"), task.get("title")])
+                                task.get("completed"), task.get("title")])
+
 
 if __name__ == "__main__":
     todolist_csv()

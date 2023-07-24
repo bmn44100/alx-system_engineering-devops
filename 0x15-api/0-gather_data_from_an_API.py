@@ -16,7 +16,7 @@ def todo_list():
     """
     employee_id = sys.argv[1]
     employee = requests.get("https://jsonplaceholder.typicode.com/users/{}"
-                        .format(employee_id)).json()
+                            .format(employee_id)).json()
     tr = "https://jsonplaceholder.typicode.com/todos?userId={}&&completed=true"
     employee_todo = requests.get(tr.format(employee_id)).json()
     list = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}"
@@ -27,6 +27,7 @@ def todo_list():
     for task in list:
         if task.get("completed"):
             print("\t {}".format(task.get("title")))
+
 
 if __name__ == "__main__":
     todo_list()
