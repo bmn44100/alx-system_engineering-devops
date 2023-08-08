@@ -9,7 +9,7 @@ def number_of_subscribers(subreddit):
     """ returns the number of subscribers (not active users,
         total subscribers) for a given subreddit. If an invalid
         subreddit is given, the function should return 0. """
-    
+
     reddit_api = 'https://api.reddit.com/r/'
     headers = {'User-Agent': 'my-app/0.0.1'}
     api_data = requests.get(

@@ -13,7 +13,8 @@ def recurse(subreddit, hot_list=[], after=""):
     found for the given subreddit, the function should return None
     """
 
-    reddit_api = "https://api.reddit.com/r/{}/hot?after={}".format(subreddit, after)
+    reddit_api = "https://api.reddit.com/r/{}/hot?after={}".format(
+        subreddit, after)
     headers = {"User-Agent": "My User Agent Request"}
     try:
         api_url = requests.get(reddit_api, headers=headers).json()
@@ -24,5 +25,5 @@ def recurse(subreddit, hot_list=[], after=""):
         if after is None:
             return hot_list
         return recurse(subreddit, hot_list, after)
-    except:
+    except BaseException:
         return None

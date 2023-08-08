@@ -20,5 +20,5 @@ def top_ten(subreddit):
         posts = api_url.get("data").get("children")
         for post in posts:
             print(post.get("data").get("title"))
-    except:
+    except BaseException:
         print(None)

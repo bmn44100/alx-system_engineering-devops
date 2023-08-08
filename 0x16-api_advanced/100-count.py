@@ -28,5 +28,5 @@ def count_words(subreddit, word_list):
         if after is None:
             return count
         return count_words(subreddit, word_list)
-    except:
+    except BaseException:
         return None
