@@ -10,11 +10,15 @@ def number_of_subscribers(subreddit):
         total subscribers) for a given subreddit. If an invalid
         subreddit is given, the function should return 0. """
     
-    reddit_api = "https://api.reddit.com/r/{}/about".format(subreddit)
-    headers = {"User-Agent": "My User Agent Request"}
+    reddit_api = 'https://api.reddit.com/r/'
+    headers = {'User-Agent': 'my-app/0.0.1'}
+    api_data = requests.get(
+        '{}{}/about'.format(
+            reddit_api, subreddit), headers=headers, allow_redirects=False)
 
-    try:
-        api_url = requests.get(reddit_api, headers=headers).json()
-        return api_url.get("data").get("subscribers")
-    except:
+    if api_data.status_code != 200:
         return 0
+
+    subreddit_data = api_data.json()
+
+    return subreddit_data['data']['subscribers']
